@@ -1,9 +1,9 @@
 //
 //  main.cpp
-//  bus_1
+//  Bus reservation system.
 //
-//  Created by Kumar Divya  Rajat on 14/04/15.
-//  Copyright (c) 2015 Kumar Divya  Rajat. All rights reserved.
+//  Created by Kruthika Ramesha and Kumar Divya  Rajat on 14/04/15.
+// 
 //
 
 #include<iostream>
@@ -12,7 +12,7 @@ using namespace std;
 int r=0,p=0,k=20;
 float allsell=0;
 
-class bus{
+class bus{                                         
     
     char arriva[9],deprt[9],from[9],to[9],pname[99];
     int busn,dtym,tseat,fair,s;
@@ -23,28 +23,28 @@ public:
     void exit();
     
     
-}b[8];
-
-void bus::install(void)
-{
-    
-    
-    cout<<"Enter Bus No:"<<endl;
+}b[8];                                          //Array of 8 bus objects. A different way to initialize the number of 
+                                                // the objects. This can also be done in the main function.
+void bus::install(void)                        
+{                                               // The install method. It is best used by the admin who can add new 
+                                                // with all the properties such as Bus number, Source, Destination, 
+                                                //departure time and total number of seats.
+    cout<<"Enter Bus No:"<<endl;                // The bus number for a new instance of the class Bus.
     cin>>busn;
-    cout<<"From: "<<endl;
+    cout<<"From: "<<endl;                       // The source for a new instance of the class Bus.
     cin>>from;
-    cout<<"To: "<<endl;
+    cout<<"To: "<<endl;                          // The destination for a new instance of the class Bus.
     cin>>to;
-    cout<<"Departure: "<<endl;
+    cout<<"Departure: "<<endl;                   // The departure time for a new instance of the class Bus.
     cin>>dtym;
-    cout<<"Total seats: "<<endl;
+    cout<<"Total seats: "<<endl;                 // The total number of seats  for a new instance of the class Bus.
     cin>>tseat;
     
-    p++;
+    p++;                                         //Keeps count of the number of objects instantiated.
     
 }
 
-void bus::show(void)
+void bus::show(void)                            // A display function which shows all the buses in the database.
 {
     cout<<"Total buses in database :"<<endl;
     for(int i=0;i<p;i++)
@@ -68,18 +68,18 @@ void bus::show(void)
 }
 
 
-void bus::book(void)
+void bus::book(void)                  //The booking method of the Bus class. 
 {
     int number;
     float fair;
     cout<<"Enter Bus No: ";
     cin>>number;
     int n;
-    for(n=0;n<p;n++)
+    for(n=0;n<p;n++)                 
     {
-        if(b[n].busn==number)
+        if(b[n].busn==number)            // Matches the bus number with the already created instances of bus class.
         {
-            if(b[n].tseat<=0)
+            if(b[n].tseat<=0)           //Checks if seats are available.
             {
                 cout<<"\tSORRY!"<<endl<<"\tNo  Seat Avleable\t";
             }
@@ -99,9 +99,9 @@ void bus::book(void)
                 }
                 
                 
-                cout<<endl<<"Your parched is completed"<<endl;
+                cout<<endl<<"Your ticket reservation is completed"<<endl;
                
-               
+                                                     //Prints the ticket details in human readable form.
                 cout<<"Bus No: ";
                 cout<<b[n].busn<<endl;
                
@@ -116,21 +116,13 @@ void bus::book(void)
                
                 cout<<"Total seat: ";
                 cout<<s<<endl;
-                fair=300*s;
-                fair=fair+(fair*.7);
-                allsell=allsell+fair;
+                fare=300*s;
+                fare=fare+(fare*.7);
+                allsell=allsell+fare;
                
                
-                cout<<"Total Fair(with 7%vat): ";
-                
-                cout.setf(ios::showpoint);
-                cout.precision(3);
-                cout.setf(ios::fixed,ios::floatfield);
-                cout.width(8);
-                cout<<fair<<endl;
-                
-               
-               
+                cout<<"Total Fare(with 7%vat): ";
+                cout<<fare<<endl;
                 cout<<"Thank You"<<endl<<endl;
                 
             }
